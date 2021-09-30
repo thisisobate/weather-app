@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Weather App</title>
+  </head>
+  <body>
+    <h4>What's the weather in your location</h4>
+    <input type="text" placeholder="enter location" id="inputID" />
+    <button onclick="weatherLocation()">enter</button>
+    <table>
+      <tr>
+        <th>Temperature</th>
+        <th>Humidity</th>
+        <th>Pressure</th>
+      </tr>
+      <tr>
+        <td id="temp"></td>
+        <td id="humid"></td>
+        <td id="pressure"></td>
+      </tr>
+    </table>
+  </body>
+  <script>
+    async function weatherLocation() {
+      const currentLocation = document.getElementById("inputID").value;
+      const currentWeatherInfo = await getWeather(currentLocation);
+      document.getElementById("temp").innerHTML =
+        currentWeatherInfo.temperature;
+      document.getElementById("humid").innerHTML = currentWeatherInfo.humidity;
+      document.getElementById("pressure").innerHTML =
+        currentWeatherInfo.pressure;
+    }
+  </script>
+</html>
